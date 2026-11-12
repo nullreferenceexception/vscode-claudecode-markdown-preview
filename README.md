@@ -1,6 +1,6 @@
 # Markdown Link Preview (for Claude Code, unofficial)
 
-Opens Markdown files in VS Code's **preview** when you click a link to them. This also works for links in the **Claude Code** chat panel, the terminal, and Copilot. Without this extension, those links open the raw text editor.
+Opens Markdown files in VS Code's **preview** when you click a link to them. This is primarily for links in the **Claude Code** chat panel, the terminal, and Copilot. Without this extension, those links open the raw text editor.
 
 > Unofficial community extension. It is not affiliated with or endorsed by
 > Anthropic.
