@@ -1,36 +1,29 @@
 # Markdown Link Preview (for Claude Code, unofficial)
 
-Opens Markdown files in VS Code's **preview** when you click a link to them —
-including links in the **Claude Code** chat panel, the terminal and Copilot,
-which otherwise open the raw text editor.
+Opens Markdown files in VS Code's **preview** when you click a link to them. This also works for links in the **Claude Code** chat panel, the terminal, and Copilot. Without this extension, those links open the raw text editor.
 
-> Unofficial community extension. Not affiliated with or endorsed by
+> Unofficial community extension. It is not affiliated with or endorsed by
 > Anthropic.
 
 ## Why
 
-If you set Markdown to open in the preview:
+If you set Markdown files to open in the preview:
 
 ```json
 "workbench.editorAssociations": { "*.md": "vscode.markdown.preview.editor" }
 ```
 
-the Explorer respects it, but many link handlers don't. They open files with
-`window.showTextDocument`, which always uses the text editor and skips VS
-Code's editor associations. The Claude Code extension's chat links work this
-way (reported upstream:
-[anthropics/claude-code#107977](https://github.com/anthropics/claude-code/issues/107977)).
+the Explorer follows this setting, but many link handlers do not. They open files with `window.showTextDocument`, which always uses the text editor and ignores VS Code's editor associations. The Claude Code extension's chat links work this way. This behavior was reported upstream:
+[anthropics/claude-code#107977](https://github.com/anthropics/claude-code/issues/107977).
 
-This extension watches for a `.md` file opening in a text editor and swaps
-that tab to the Markdown preview right away.
+This extension watches for Markdown files opening in a text editor and immediately switches them to the Markdown preview.
 
 ## What it leaves alone
 
 - Files with **unsaved changes**.
 - **Diffs** and Git comparisons.
-- Anything that isn't a `.md` file on disk (untitled or virtual documents).
-- Files you deliberately switch back to text with **Reopen Editor With… →
-  Text Editor**. They stay as text until you close all their tabs.
+- Files that are not `.md` files on disk, including untitled or virtual documents.
+- Files you deliberately switch back to text with **Reopen Editor With… → Text Editor**. They stay in the text editor until you close all their tabs.
 
 ## Install
 
@@ -42,8 +35,7 @@ page and install it:
 code --install-extension vscode-claudecode-markdown-preview-0.1.0.vsix
 ```
 
-or in VS Code: *Extensions → … → Install from VSIX*. Reload the window
-afterwards.
+You can also install it in VS Code by selecting *Extensions → … → Install from VSIX*. Reload the window afterwards.
 
 To build it yourself:
 
@@ -53,19 +45,18 @@ npx @vscode/vsce package
 
 ## Settings
 
-| Setting | Default | |
+| Setting | Default | Description |
 |---|---|---|
-| `markdownLinkPreview.enabled` | `true` | Turn the swap on or off. |
+| `markdownLinkPreview.enabled` | `true` | Turn the extension on or off. |
 
 ## Limitations
 
-- A link to a specific line opens the preview at the top; the preview can't
-  jump to a line.
-- The text editor appears for a fraction of a second before the swap.
+- Links to specific lines open the preview at the top of the file. The preview cannot jump to a line.
+- The text editor may appear briefly before the preview opens.
 
 ## Development
 
-No dependencies. Run the tests with `node test/test.js`.
+There are no dependencies. Run the tests with `node test/test.js`.
 
 ## License
 
