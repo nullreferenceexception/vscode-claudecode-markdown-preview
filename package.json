@@ -1,0 +1,48 @@
+{
+  "name": "vscode-claudecode-markdown-preview",
+  "displayName": "Markdown Link Preview (for Claude Code, unofficial)",
+  "description": "Open Markdown links in the preview, even from the Claude Code chat panel, the terminal or Copilot, which otherwise ignore the *.md editor association.",
+  "version": "0.1.0",
+  "publisher": "nullreferenceexception",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/nullreferenceexception/vscode-claudecode-markdown-preview.git"
+  },
+  "bugs": {
+    "url": "https://github.com/nullreferenceexception/vscode-claudecode-markdown-preview/issues"
+  },
+  "homepage": "https://github.com/nullreferenceexception/vscode-claudecode-markdown-preview#readme",
+  "engines": {
+    "vscode": "^1.85.0"
+  },
+  "categories": [
+    "Other"
+  ],
+  "keywords": [
+    "markdown",
+    "preview",
+    "claude",
+    "claude-code",
+    "links"
+  ],
+  "activationEvents": [
+    "onStartupFinished"
+  ],
+  "main": "./extension.js",
+  "contributes": {
+    "configuration": {
+      "title": "Markdown Link Preview",
+      "properties": {
+        "markdownLinkPreview.enabled": {
+          "type": "boolean",
+          "default": true,
+          "description": "Open Markdown (.md) files in the preview when they come from a link (Claude Code panel, terminal, Copilot) that would otherwise open the text editor. Files with unsaved changes, diffs, and files you switch back to the text editor yourself are left alone."
+        }
+      }
+    }
+  },
+  "scripts": {
+    "test": "node test/test.js"
+  }
+}
